@@ -1,0 +1,40 @@
+---
+openapi: 3.0.0
+servers:
+  - url: 'http://localhost:{port}/sample'
+    description: 'Development server running on localhost'
+    variables:
+      port:
+        default: '8080'
+        description: port number on which the server is running
+info:
+  description: A simple API
+  version: 1.0.1
+  title: Simple API
+paths:
+  /person:
+    get:
+      summary: Gets a random person
+      description: Returns a person
+      tags:
+        - Person
+      operationId: getPerson
+      responses:
+        '200':
+          description: A Person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+components:
+  schemas:
+    Person:
+      type: object
+      description: A simple definition of a named person.
+      properties:
+        firstName:
+          type: string
+          example: Stan
+        lastName:
+          type: string
+          example: Smith
